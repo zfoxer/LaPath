@@ -143,14 +143,7 @@ LaSystem::LaSystem(const std::string& filename, int iterations)
 		std::cerr << e.what() << std::endl;
 	}
     
-    if(iterations > 0)
-    {
-        this->iterations = iterations;
-    }
-    else
-    {
-        this->iterations = ITERATIONS;
-    }
+    this->iterations = (iterations > 0) ? iterations : ITERATIONS;
 }
 
 LaSystem::~LaSystem() { }
