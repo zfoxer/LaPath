@@ -1,0 +1,13 @@
+{
+  "number_of_nodes": 6,
+  "links": [
+    { "nodes":[0,1] , "length":324 }, { "nodes":[1,0] , "length":324 },
+    { "nodes":[0,2] , "length":368 }, { "nodes":[2,0] , "length":368 },
+    { "nodes":[1,2] , "length":432 }, { "nodes":[2,1] , "length":432 },
+    { "nodes":[1,3] , "length":592 }, { "nodes":[3,1] , "length":592 },
+    { "nodes":[2,4] , "length":632 }, { "nodes":[4,2] , "length":632 },
+    { "nodes":[3,4] , "length":464 }, { "nodes":[4,3] , "length":464 },
+    { "nodes":[3,5] , "length":384 }, { "nodes":[5,3] , "length":384 },
+    { "nodes":[4,5] , "length":336 }, { "nodes":[5,4] , "length":336 }
+  ]
+}
