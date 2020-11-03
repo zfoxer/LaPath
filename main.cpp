@@ -24,7 +24,7 @@
 
 int simpleRun()
 {
-	AdaptiveSystem* la = new LaSystem("topology.json");
+	AdaptiveSystem* la = new LaSystem("topology.json", LaSystem::ITERATIONS);
 	auto nodePath = la->path(0, 5);
 	for(int n : nodePath)
 		std::cout << n << " ";

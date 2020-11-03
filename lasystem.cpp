@@ -124,7 +124,7 @@ void LA::dumbProbs(std::ostream& out)
 		out << "node: " << pair.first << ", prob: " << pair.second << std::endl;
 }
 
-LaSystem::LaSystem(const std::string& filename) 
+LaSystem::LaSystem(const std::string& filename, int iterations) 
 {
 	maxLength = 0;
 	try
@@ -142,6 +142,15 @@ LaSystem::LaSystem(const std::string& filename)
 	{
 		std::cerr << e.what() << std::endl;
 	}
+    
+    if(iterations > 0)
+    {
+        this->iterations = iterations;
+    }
+    else
+    {
+        this->iterations = ITERATIONS;
+    }
 }
 
 LaSystem::~LaSystem() { }

@@ -71,7 +71,7 @@ public:
 	};
 	static const int ITERATIONS = 400;
 	static const double TIME_SLOT;
-	LaSystem(const std::string&);
+	LaSystem(const std::string&, int = 0);
 	virtual ~LaSystem();
 	virtual void insertEdge(Edge);
 	virtual std::vector<int> path(int, int);
@@ -89,7 +89,8 @@ private:
 	int sizeFromLength(double);
 	double maxLength;
 	std::unordered_set<Edge, edgeHash> localEdges;  
-	std::unordered_map<int, LA> las;    
+	std::unordered_map<int, LA> las;
+    int iterations;
 };
 
 #endif // LASYSTEM_H
