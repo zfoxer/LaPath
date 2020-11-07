@@ -64,7 +64,7 @@ class LaSystem : public AdaptiveSystem
 public:
 	struct edgeHash
 	{
-		size_t operator()(const Edge& edge) const
+		size_t operator()(const AdaptiveSystem::Edge& edge) const
 		{
 			return std::hash<long int>()(edge.id);
 		}
@@ -73,11 +73,11 @@ public:
 	static const double TIME_SLOT;
 	LaSystem(const std::string&, int = 0);
 	virtual ~LaSystem();
-	virtual void insertEdge(Edge);
 	virtual std::vector<int> path(int, int);
 	virtual void clear();
 	
 private:
+	void insertEdge(AdaptiveSystem::Edge);
 	void traverse(int, int, std::list<int>&, double);
 	std::list<int> fewerHops(const std::vector<std::list<int> >&);
 	bool detectCycle(const std::list<int>&);
@@ -88,9 +88,9 @@ private:
 	double calcFeedback(std::list<int>&);
 	int sizeFromLength(double);
 	double maxLength;
-	std::unordered_set<Edge, edgeHash> localEdges;  
+	std::unordered_set<AdaptiveSystem::Edge, edgeHash> localEdges;  
 	std::unordered_map<int, LA> las;
-    int iterations;
+	int iterations;
 };
 
 #endif // LASYSTEM_H
