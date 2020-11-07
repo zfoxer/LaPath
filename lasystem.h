@@ -69,7 +69,7 @@ public:
 			return std::hash<long int>()(edge.id);
 		}
 	};
-	static const int ITERATIONS = 400;
+	static const int ITERATIONS = 800;
 	static const double TIME_SLOT;
 	LaSystem(const std::string&, int = 0);
 	virtual ~LaSystem();
