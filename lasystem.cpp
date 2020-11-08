@@ -1,7 +1,7 @@
 /*
  * LaPath: Shortest path calculation using Learning Automata
  * Copyright (C) 2014-2020 by Constantine Kyriakopoulos
- * @version 0.9
+ * @version 1.0
  * 
  * @section LICENSE
  * 
@@ -142,8 +142,8 @@ LaSystem::LaSystem(const std::string& filename, int iterations)
 	{
 		std::cerr << e.what() << std::endl;
 	}
-    
-    this->iterations = (iterations > 0) ? iterations : ITERATIONS;
+	
+	this->iterations = (iterations > 0) ? iterations : ITERATIONS;
 }
 
 LaSystem::~LaSystem() { }

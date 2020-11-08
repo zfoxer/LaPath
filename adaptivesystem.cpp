@@ -1,7 +1,7 @@
 /*
  * LaPath: Shortest path calculation using Learning Automata
  * Copyright (C) 2014-2020 by Constantine Kyriakopoulos
- * @version 0.9
+ * @version 1.0
  * 
  * @section LICENSE
  * 
@@ -51,7 +51,7 @@ void AdaptiveSystem::initTopo(const std::string& filename)
 	ptree pt;
 	boost::property_tree::read_json(filename, pt);
 	ptree::const_iterator end = pt.end();
-    for(ptree::const_iterator it = pt.begin(); it != end; ++it)
+	for(ptree::const_iterator it = pt.begin(); it != end; ++it)
 	{
 		if(!std::strcmp(it->first.c_str(), "number_of_nodes"))
 			continue;
