@@ -79,7 +79,6 @@ public:
 private:
 	void insertEdge(AdaptiveSystem::Edge);
 	void traverse(int, int, std::list<int>&, double);
-	std::list<int> fewerHops(const std::vector<std::list<int> >&);
 	bool detectCycle(const std::list<int>&);
 	LA* getLA(int);
 	double pathLength(const std::list<int>&) const noexcept(false);

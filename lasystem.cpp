@@ -214,7 +214,7 @@ std::vector<int> LaSystem::path(int src, int dest)
 		applyFeedback(path, time, calcFeedback(path));
 		time += TIME_SLOT;
 	}
-	
+
 	std::vector<int> retPath;
 	for(int node : bestPath)
 		retPath.push_back(node);
@@ -222,23 +222,6 @@ std::vector<int> LaSystem::path(int src, int dest)
 	return retPath;
 }
 
-std::list<int> LaSystem::fewerHops(const std::vector<std::list<int> >& paths)
-{
-	std::list<int> chosenPath;
-	unsigned int nodes = std::numeric_limits<unsigned int>::max();
-	std::for_each(paths.begin(), paths.end(),
-			[&chosenPath, &nodes](std::list<int> path)
-			{
-				if(path.size() < nodes)
-				{
-					nodes = path.size();
-					chosenPath = path;
-				}
-			});
-	
-	return chosenPath;
-}
-	
 double LaSystem::pathLength(const std::list<int>& path) const noexcept(false)
 {
 	if(path.size() <= 1 || static_cast<int>(path.size()) > las.size())
