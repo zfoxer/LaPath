@@ -51,15 +51,10 @@ void AdaptiveSystem::initTopo(const std::string& filename)
 	ptree pt;
 	boost::property_tree::read_json(filename, pt);
 	ptree::const_iterator end = pt.end();
-	std::stringstream data;
-	for(ptree::const_iterator it = pt.begin(); it != end; ++it)
+    for(ptree::const_iterator it = pt.begin(); it != end; ++it)
 	{
 		if(!std::strcmp(it->first.c_str(), "number_of_nodes"))
-		{
-			data <<  it->second.get_value<int>();
-			data << std::endl;
 			continue;
-		}
 
 		int edgeId = 0;
 		ptree::const_iterator end2 = it->second.end();
