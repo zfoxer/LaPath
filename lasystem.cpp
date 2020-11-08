@@ -298,14 +298,7 @@ void LaSystem::applyTimeChange(std::list<int>& path, double time)
 
 double LaSystem::calcFeedback(std::list<int>& path)
 {
-	double feedback = static_cast<double>(las.size()) / path.size();
-	
-	if(feedback < 0)
-		feedback = 0;
-	if(feedback > 1)
-		feedback = 1;
-
-	return feedback;
+	return 1 - path.size() / static_cast<double>(las.size());
 }
 
 void LaSystem::traverse(int node, int dest, std::list<int>& path, double currentTime)
