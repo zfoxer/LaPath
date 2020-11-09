@@ -18,17 +18,17 @@ This is a heuristic method, i.e., optimal results are not always feasible. Accor
 
 ## Prerequisites to build
 
-There are only two requirements, i.e., the Boost Library and compatibility with the C++20 standard. Suggested is Boost Library 1.67 for parsing the JSON representation of the topology. Also, to compile the code, enable C++20 compatibility with the parameter ‘-std=c++2a’ when using, e.g., Clang 11. You can use ‘-stdlib=libc++’ to enable the STL implementation of the LLVM project.
+There are only two requirements, i.e., the Boost Library and availability of the C++20 standard. Boost is utilised for parsing the JSON representation of the topology.
 
 
 ## Usage
 
-Create a new instance of LaSystem in your code passing as parameters the JSON topology file and the number of iterations (default iteration number is provided but it won’t return the shortest paths under all topology sizes). Next, execute the method ‘path(src, dest)’ where ‘src’ is the source node and ‘dest’ the destination to reach. This returns the valid path which the LA converge to.
+Create a new instance of LaSystem in your code passing as parameters the JSON topology file and the number of iterations (default iteration number is also provided but it won’t return the shortest paths under all topology sizes). Next, execute the method ‘path(src, dest)’ where ‘src’ is the source node and ‘dest’ the destination to reach. This returns the valid path which the LA converge to.
 
 
 ## Related work
 
-The linear probability updating scheme Linear Reward-Inaction Algorithm [1] is used to update the probability numbers of LA after each iteration. The choice of the next neighbour for routing is provided by Broadcast Scheduling Algorithm A in [2].
+The linear probability updating scheme Linear Reward-Inaction Algorithm [1] updates the probability numbers of LA after each iteration. The choice of the next neighbour for routing is provided by Broadcast Scheduling Algorithm A [2].
 
 ```python
 [1] Thathachar, M.A. and Sastry, P.S., 2004. Networks of learning automata: Techniques for online stochastic optimization. Springer Science & Business Media.
