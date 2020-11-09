@@ -166,13 +166,14 @@ void LaSystem::insertEdge(Edge edge)
 
 int LaSystem::sizeFromLength(double length)
 {
-	std::array<int, 4> availSizes{1, 2, 3, 4};
+	std::array<int, 8> availSizes{1, 2, 3, 4, 5, 6, 7, 8};
 	if(length >= maxLength) 
-		return availSizes[3];
+		return availSizes[7];
 	if(length <= 0) 
 		return availSizes[0];
 	
-	return availSizes[static_cast<int>(std::floor(availSizes.size() * length / maxLength))];
+	return availSizes[static_cast<int>(std::floor(availSizes.size() 
+			* length / (maxLength + 1)))];
 }
 
 std::vector<int> LaSystem::path(int src, int dest)
