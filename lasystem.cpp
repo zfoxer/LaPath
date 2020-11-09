@@ -182,7 +182,7 @@ std::vector<int> LaSystem::path(int src, int dest)
 	double evaluation = std::numeric_limits<double>::max();
 	double time = TIME_SLOT;
 	
-	for(int i = 1; i <= ITERATIONS; ++i)
+	for(int i = 1; i <= iterations; ++i)
 	{
 		std::list<int> path;
 		traverse(src, dest, path, time);
