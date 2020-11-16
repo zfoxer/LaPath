@@ -1,7 +1,7 @@
 /*
  * LaPath: Shortest path calculation using Learning Automata
  * Copyright (C) 2014-2020 by Constantine Kyriakopoulos
- * @version 1.0
+ * @version 1.0.1
  * 
  * @section LICENSE
  * 
@@ -22,30 +22,62 @@
 
 #include "adaptivesystem.h"
 
+/**
+ *	Empty constructor.
+ */
 AdaptiveSystem::AdaptiveSystem() { }
 
+/**
+ *	Empty destructor.
+ */
 AdaptiveSystem::~AdaptiveSystem() { }
 
+/**
+ *	Edge constructor.
+ */
 AdaptiveSystem::Edge::Edge()
 {
 	edgeStart = edgeEnd = weight = id = 0;
 }
 
+/**
+ *  Comparison of current instance with the rhs, based on IDs.
+ *
+ *  @param rhs The right hand side object
+ *  @return bool The indication of current id being less than rhs'
+ */
 bool AdaptiveSystem::Edge::operator<(const Edge& rhs) const
 {
 	return id < rhs.id;
 }
 
+/**
+ *  Comparison of current instance with the rhs, based on IDs.
+ *
+ *  @param rhs The right hand side object
+ *  @return bool The indication of current id being greater than rhs'
+ */
 bool AdaptiveSystem::Edge::operator>(const Edge& rhs) const
 {
 	return id > rhs.id;
 }
 
+/**
+ *  Comparison of current instance with the rhs for equality, based on IDs.
+ *
+ *  @param rhs The right hand side object
+ *  @return bool The indication of equality
+ */
 bool AdaptiveSystem::Edge::operator==(const Edge& rhs) const
 {
 	return id == rhs.id;
 }
 
+/**
+ *  Initialises the internal topology representation.
+ *
+ *  @param filename The JSON filename containing the physical topology
+ */
 void AdaptiveSystem::initTopo(const std::string& filename)
 {
 	ptree pt;

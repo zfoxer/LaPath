@@ -2,7 +2,7 @@
 
 ```python
 Copyright (C) 2014-2020 by Constantine Kyriakopoulos
-Version: 1.0
+Version: 1.0.1
 License: GNU GPL Version 3
 ```
 
@@ -18,7 +18,7 @@ This is a heuristic method, i.e., optimal results are not always feasible. Accor
 
 ## Prerequisites to build
 
-There are only two requirements, i.e., the Boost Library and the availability of C++20 or C++17 standard. Boost is utilised for parsing the JSON representation of the topology. Tested with Clang 11 and libc++ from the LLVM project.
+There are only two requirements, i.e., the Boost Library and the availability of C++20 or C++17 standard. Boost is utilised for parsing the JSON representation of the topology. Tested with clang 11 and libc++ from the LLVM project.
 
 
 ## Usage

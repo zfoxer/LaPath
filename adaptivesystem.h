@@ -1,7 +1,7 @@
 /*
  * LaPath: Shortest path calculation using Learning Automata
  * Copyright (C) 2014-2020 by Constantine Kyriakopoulos
- * @version 1.0
+ * @version 1.0.1
  *
  * @section LICENSE
  *  

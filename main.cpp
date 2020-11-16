@@ -1,7 +1,7 @@
 /*
  * LaPath: Shortest path calculation using Learning Automata
  * Copyright (C) 2014-2020 by Constantine Kyriakopoulos
- * @version 1.0
+ * @version 1.0.1
  * 
  * @section LICENSE
  *  
@@ -22,7 +22,7 @@
 
 #include "lasystem.h"
 
-int simpleRun()
+bool simpleRun()
 {
 	AdaptiveSystem* la = new LaSystem("topology.json", LaSystem::ITERATIONS);
 	auto nodePath = la->path(0, 19);
@@ -31,10 +31,10 @@ int simpleRun()
 	std::cout << std::endl;
 	delete la;
 
-	return nodePath.size() ? EXIT_SUCCESS : EXIT_FAILURE;
+	return nodePath.size() > 0;
 }
 
 int main(int argc, char *argv[])
 {
-	return simpleRun();
+	return simpleRun() ? EXIT_SUCCESS : EXIT_FAILURE;
 }
