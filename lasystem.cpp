@@ -25,7 +25,11 @@
 /**
  * Default empty constructor.
  */
-LA::LA() { }
+LA::LA()
+{
+    std::random_device rd;
+    gen = std::mt19937_64(rd());
+}
 
 /**
  * Constructor that uses an initializer list for LA's items.
@@ -38,6 +42,8 @@ LA::LA(std::initializer_list<int> neighs)
 		lastTimes[neigh] = 0;
 		sizes[neigh] = 1;
 	}
+    std::random_device rd;
+    gen = std::mt19937_64(rd());
 }
 
 /**
@@ -159,8 +165,6 @@ int LA::nextItem(double time)
 	if(chosenNeighs.size())
 	{
 		// Choose one by using a uniform distribution
-		std::random_device rd;
-		std::mt19937_64 gen(rd());
 		std::uniform_int_distribution<> distro(0, chosenNeighs.size() - 1);
 		chosenNeigh = chosenNeighs[distro(gen)];
 	}

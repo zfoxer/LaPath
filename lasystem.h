@@ -56,7 +56,8 @@ public:
 private:
 	std::map<int, double> probs;		
 	std::map<int, double> lastTimes;	
-	std::map<int, int> sizes;			
+	std::map<int, int> sizes;
+    std::mt19937_64 gen;
 };
 
 class LaSystem : public AdaptiveSystem
