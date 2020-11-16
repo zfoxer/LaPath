@@ -23,17 +23,17 @@
 #include "adaptivesystem.h"
 
 /**
- *	Empty constructor.
+ * Empty constructor.
  */
 AdaptiveSystem::AdaptiveSystem() { }
 
 /**
- *	Empty destructor.
+ * Empty destructor.
  */
 AdaptiveSystem::~AdaptiveSystem() { }
 
 /**
- *	Edge constructor.
+ * Edge constructor.
  */
 AdaptiveSystem::Edge::Edge()
 {
@@ -41,10 +41,10 @@ AdaptiveSystem::Edge::Edge()
 }
 
 /**
- *  Comparison of current instance with the rhs, based on IDs.
+ * Comparison of current instance with the rhs, based on IDs.
  *
- *  @param rhs The right hand side object
- *  @return bool The indication of current id being less than rhs'
+ * @param rhs The right hand side object
+ * @return bool The indication of current id being less than rhs'
  */
 bool AdaptiveSystem::Edge::operator<(const Edge& rhs) const
 {
@@ -52,10 +52,10 @@ bool AdaptiveSystem::Edge::operator<(const Edge& rhs) const
 }
 
 /**
- *  Comparison of current instance with the rhs, based on IDs.
+ * Comparison of current instance with the rhs, based on IDs.
  *
- *  @param rhs The right hand side object
- *  @return bool The indication of current id being greater than rhs'
+ * @param rhs The right hand side object
+ * @return bool The indication of current id being greater than rhs'
  */
 bool AdaptiveSystem::Edge::operator>(const Edge& rhs) const
 {
@@ -63,10 +63,10 @@ bool AdaptiveSystem::Edge::operator>(const Edge& rhs) const
 }
 
 /**
- *  Comparison of current instance with the rhs for equality, based on IDs.
+ * Comparison of current instance with the rhs for equality, based on IDs.
  *
- *  @param rhs The right hand side object
- *  @return bool The indication of equality
+ * @param rhs The right hand side object
+ * @return bool The indication of equality
  */
 bool AdaptiveSystem::Edge::operator==(const Edge& rhs) const
 {
@@ -74,9 +74,9 @@ bool AdaptiveSystem::Edge::operator==(const Edge& rhs) const
 }
 
 /**
- *  Initialises the internal topology representation.
+ * Initialises the internal topology representation.
  *
- *  @param filename The JSON filename containing the physical topology
+ * @param filename The JSON filename containing the physical topology
  */
 void AdaptiveSystem::initTopo(const std::string& filename)
 {

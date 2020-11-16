@@ -23,12 +23,12 @@
 #include "lasystem.h"
 
 /**
- *	Default empty constructor.
+ * Default empty constructor.
  */
 LA::LA() { }
 
 /**
- *	Constructor that uses an initializer list for LA's items.
+ * Constructor that uses an initializer list for LA's items.
  */
 LA::LA(std::initializer_list<int> neighs)
 {
@@ -41,19 +41,19 @@ LA::LA(std::initializer_list<int> neighs)
 }
 
 /**
- *	Empty destructor.
+ * Empty destructor.
  */
 LA::~LA() { }
 
 /**
- *	Updates all probabilities. Increases the one of the given item and decreases all others.
- *	Summary before and after the increase is equal to 1. The sum of the decrease per item is
- *	the amount of the increase for the input item.
+ * Updates all probabilities. Increases the one of the given item and decreases all others.
+ * Summary before and after the increase is equal to 1. The sum of the decrease per item is
+ * the amount of the increase for the input item.
  *
- *	@param node The item whose probability will be increased
- *	@param time The timestamp of the increase
- *	@param feedback Environment's response to the item
- *	@throws std::out_of_range The item is unknown to this LA
+ * @param node The item whose probability will be increased
+ * @param time The timestamp of the increase
+ * @param feedback Environment's response to the item
+ * @throws std::out_of_range The item is unknown to this LA
  */
 void LA::updateProbs(int node, double time, double feedback) noexcept(false)
 {
@@ -68,8 +68,8 @@ void LA::updateProbs(int node, double time, double feedback) noexcept(false)
 	double a = 0.0001;
 	double l = 0.15;
 	double sumPj = 0;
-	//	The value of 'l' determines the convergence speed to the actual
-	//	demand probabilities and 'a' makes low priority neighbours not reach zero value
+	// The value of 'l' determines the convergence speed to the actual
+	// demand probabilities and 'a' makes low priority neighbours not reach zero value
 	for(auto& nodeProb : probs)
 		if(nodeProb.first != node)
 		{
@@ -78,17 +78,17 @@ void LA::updateProbs(int node, double time, double feedback) noexcept(false)
 					- l * feedback * (probs[nodeProb.first] - a));
 		}
 	
-	//	The amount that was subtracted from the other items, will be added to this one.
+	// The amount that was subtracted from the other items, will be added to this one.
 	probs[node] = (probs[node] + l * feedback * sumPj);
 	lastTimes[node] = time;
 }
 
 /**
- *	Updates the time the given item was last selected.
+ * Updates the time the given item was last selected.
  *
- *	@param item The item whose "last selected time" will be updated
- *	@param time The timestamp
- *	@throws std::out_of_range The item is unknown to this LA
+ * @param item The item whose "last selected time" will be updated
+ * @param time The timestamp
+ * @throws std::out_of_range The item is unknown to this LA
  */
 void LA::timeChange(int item, double time) noexcept(false)
 {
@@ -99,9 +99,9 @@ void LA::timeChange(int item, double time) noexcept(false)
 }
 
 /**
- *	Fetches all local items.
+ * Fetches all local items.
  * 
- *	@return std::list<int> All locally monitored items
+ * @return std::list<int> All locally monitored items
  */
 std::list<int> LA::items()
 {
@@ -113,10 +113,10 @@ std::list<int> LA::items()
 }
 
 /**
- *	Inserts a new item to this LA. Probabilities are updated to be equal.
+ * Inserts a new item to this LA. Probabilities are updated to be equal.
  * 
- *	@param node A new item to be inserted
- *	@param size Its size
+ * @param node A new item to be inserted
+ * @param size Its size
  */
 void LA::insertItem(int node, int size)
 {
@@ -132,10 +132,10 @@ void LA::insertItem(int node, int size)
 }
 
 /**
- *	Chooses the next item considering its cost value.
+ * Chooses the next item considering its cost value.
  *
- *	@param time The current time value
- *	@return int The chosen item
+ * @param time The current time value
+ * @return int The chosen item
  */
 int LA::nextItem(double time)
 {
@@ -145,7 +145,7 @@ int LA::nextItem(double time)
 	{
 		double nodeCost = std::pow(time - lastTimes[pair.first], 2) 
 				* pair.second / sizes[pair.first];
-		//	Keeping track of the item with the maximum cost
+		// Keeping track of the item with the maximum cost
 		if(nodeCost > maxCost)
 			maxCost = nodeCost;
 	}
@@ -155,10 +155,10 @@ int LA::nextItem(double time)
 		if(maxCost == std::pow(time - lastTimes[pair.first], 2) * pair.second / sizes[pair.first])
 			chosenNeighs.push_back(pair.first);
 	
-	//	Collect all items with cost equal to maximum
+	// Collect all items with cost equal to maximum
 	if(chosenNeighs.size())
 	{
-		//	Choose one by using a uniform distribution
+		// Choose one by using a uniform distribution
 		std::random_device rd;
 		std::mt19937_64 gen(rd());
 		std::uniform_int_distribution<> distro(0, chosenNeighs.size() - 1);
@@ -169,9 +169,9 @@ int LA::nextItem(double time)
 }
 
 /**
- *	Prints all current probability values to the specified output stream.
+ * Prints all current probability values to the specified output stream.
  *
- *	@param out The STL output stream probabilities will be written to
+ * @param out The STL output stream probabilities will be written to
  */
 void LA::dumbProbs(std::ostream& out)
 {
@@ -180,10 +180,10 @@ void LA::dumbProbs(std::ostream& out)
 }
 
 /**
- *	Constructor for the LaSystem. 
+ * Constructor for the LaSystem. 
  *
- *	@param filename The JSON filename containing the physical topology
- *	@param iterations The number of iterations, LAs will use to converge
+ * @param filename The JSON filename containing the physical topology
+ * @param iterations The number of iterations, LAs will use to converge
  */
 LaSystem::LaSystem(const std::string& filename, int iterations) 
 {
@@ -208,14 +208,14 @@ LaSystem::LaSystem(const std::string& filename, int iterations)
 }
 
 /**
- *	Empty destructor.
+ * Empty destructor.
  */
 LaSystem::~LaSystem() { }
 
 /**
- *	Inserts a new edge to the LA System. Constructs the virtual topology internally.
+ * Inserts a new edge to the LA System. Constructs the virtual topology internally.
  *
- *	@param edge The edge to be inserted
+ * @param edge The edge to be inserted
  */
 void LaSystem::insertEdge(Edge edge)
 {
@@ -223,7 +223,7 @@ void LaSystem::insertEdge(Edge edge)
 	LA la;
 	la.insertItem(edge.edgeEnd, sizeFromLength(edge.weight));
 	
-	//	Every node is mapped to a LA. LAs contain its neighbours.
+	// Every node is mapped to a LA. LAs contain its neighbours.
 	if(las.find(edge.edgeStart) == las.end())
 		las[edge.edgeStart] = la;
 	else
@@ -235,10 +235,10 @@ void LaSystem::insertEdge(Edge edge)
 }
 
 /**
- *	Creates a size value from an edge's length. This value will be considered from the LA
- *	for choosing the next item.
+ * Creates a size value from an edge's length. This value will be considered from the LA
+ * for choosing the next item.
  *
- *	@param length The weight of an edge
+ * @param length The weight of an edge
  */
 int LaSystem::sizeFromLength(double length)
 {
@@ -253,11 +253,11 @@ int LaSystem::sizeFromLength(double length)
 }
 
 /**
- *	Finds the best path from a source node to destination, using the LA system.
+ * Finds the best path from a source node to destination, using the LA system.
  *
- *	@param src Starting node
- *	@param dest Ending node
- *	@return std::vector<int> The converged path
+ * @param src Starting node
+ * @param dest Ending node
+ * @return std::vector<int> The converged path
  */
 std::vector<int> LaSystem::path(int src, int dest)
 {
@@ -265,15 +265,15 @@ std::vector<int> LaSystem::path(int src, int dest)
 	double evaluation = std::numeric_limits<double>::max();
 	double time = TIME_SLOT;
 	
-	//	All these attempts will be made
+	// All these attempts will be made
 	for(int i = 1; i <= iterations; ++i)
 	{
 		std::list<int> path;
 		traverse(src, dest, path, time);
 		if(path.front() != src || path.back() != dest)
 		{
-			//	Failed to find adequate path
-			//	Path nodes will have their 'chosen' timestamps updated
+			// Failed to find adequate path
+			// Path nodes will have their 'chosen' timestamps updated
 			applyTimeChange(path, time);
 			time += TIME_SLOT;
 			continue;
@@ -282,18 +282,18 @@ std::vector<int> LaSystem::path(int src, int dest)
 		double length = std::numeric_limits<double>::max();
 		try
 		{ 
-			//	A valid path is found, so it will be evaluated
+			// A valid path is found, so it will be evaluated
 			length = pathLength(path);
 		}
 		catch(std::exception& exc) 
 		{
-			//	Evaluation failed, cancel this attempt
+			// Evaluation failed, cancel this attempt
 			applyTimeChange(path, time);
 			time += TIME_SLOT;
 			continue;
 		}
 		
-		//	Lower evaluation values are better, so keep the lowest
+		// Lower evaluation values are better, so keep the lowest
 		if(length < evaluation)
 		{
 			evaluation = length;
@@ -301,7 +301,7 @@ std::vector<int> LaSystem::path(int src, int dest)
 			bestPath = path;
 		}	
 		
-		//	Update path's nodes with apropriate feedback
+		// Update path's nodes with apropriate feedback
 		applyFeedback(path, time, calcFeedback(path));
 		time += TIME_SLOT;
 	}
@@ -314,11 +314,11 @@ std::vector<int> LaSystem::path(int src, int dest)
 }
 
 /**
- *	Path length calculation method.
+ * Path length calculation method.
  *
- *	@param path The path to be evaluated
- *	@return double The given path's length
- *	@throws std::invalid_argument Invalid path value
+ * @param path The path to be evaluated
+ * @return double The given path's length
+ * @throws std::invalid_argument Invalid path value
  */
 double LaSystem::pathLength(const std::list<int>& path) const noexcept(false)
 {
@@ -330,10 +330,10 @@ double LaSystem::pathLength(const std::list<int>& path) const noexcept(false)
 		vecPath.push_back(node);
 	
 	double weightSum = 0;
-	//	For every path segment
+	// For every path segment
 	for(int i = 0; i < (int)vecPath.size() - 1; ++i)
 	{
-		//	Find the edges that start with current trace node using the next lambda function
+		// Find the edges that start with current trace node using the next lambda function
 		std::for_each(localEdges.cbegin(), localEdges.cend(),
 				[&vecPath, i, &weightSum](Edge edge)
 				{ 
@@ -346,11 +346,11 @@ double LaSystem::pathLength(const std::list<int>& path) const noexcept(false)
 }
 
 /**
- *	Applies a feedback value to path's nodes.
+ * Applies a feedback value to path's nodes.
  *
- *	@param path The path containing the nodes
- *	@param time The current update time
- *	@param feedback	The feedback value (range 0-1)
+ * @param path The path containing the nodes
+ * @param time The current update time
+ * @param feedback	The feedback value (range 0-1)
  */
 void LaSystem::applyFeedback(std::list<int>& path, double time, double feedback)
 {
@@ -358,7 +358,7 @@ void LaSystem::applyFeedback(std::list<int>& path, double time, double feedback)
 	for(int node : path)
 		vecPath.push_back(node);
 		
-	//	Get the right LA for path's nodes and update the probability for the right neighbour
+	// Get the right LA for path's nodes and update the probability for the right neighbour
 	for(unsigned int i = 0; i < vecPath.size() - 1; ++i)
 		try
 		{
@@ -371,10 +371,10 @@ void LaSystem::applyFeedback(std::list<int>& path, double time, double feedback)
 }
 
 /**
- *	Applies a time change value to path's nodes.
+ * Applies a time change value to path's nodes.
  *
- *	@param path The path containing the nodes
- *	@param time The current update time
+ * @param path The path containing the nodes
+ * @param time The current update time
  */
 void LaSystem::applyTimeChange(std::list<int>& path, double time)
 {
@@ -394,10 +394,10 @@ void LaSystem::applyTimeChange(std::list<int>& path, double time)
 }
 
 /**
- *	Calculates the feedback for a given path.
+ * Calculates the feedback for a given path.
  *
- *	@param path The path containing the nodes
- *	@return double The feedback value [0,1]
+ * @param path The path containing the nodes
+ * @return double The feedback value [0,1]
  */
 double LaSystem::calcFeedback(std::list<int>& path)
 {
@@ -405,12 +405,12 @@ double LaSystem::calcFeedback(std::list<int>& path)
 }
 
 /**
- *	Brute force method to find a path between two nodes. All valid result are returned.
+ * Brute force method to find a path between two nodes. All valid result are returned.
  *
- *	@param node The current node
- *	@param dest The destination to be reached
- *	@param path The current path nodes
- *	@param currentTime The current time slot
+ * @param node The current node
+ * @param dest The destination to be reached
+ * @param path The current path nodes
+ * @param currentTime The current time slot
  */
 void LaSystem::traverse(int node, int dest, std::list<int>& path, double currentTime)
 {
@@ -422,15 +422,15 @@ void LaSystem::traverse(int node, int dest, std::list<int>& path, double current
 	if((nextNode = getLA(node)->nextItem(currentTime)) == LA::NO_NEXT_ITEM)
 		return;
 	
-	//	Recurse to the next node
+	// Recurse to the next node
 	traverse(nextNode, dest, path, currentTime);
 }
 
 /**
- *	Returns the LA that is mapped to a node.
+ * Returns the LA that is mapped to a node.
  *
- *	@param item The item that is mapped to an LA containing its neighbours
- *	@return LA* The LA pointer
+ * @param item The item that is mapped to an LA containing its neighbours
+ * @return LA* The LA pointer
  */
 LA* LaSystem::getLA(int item)
 {
@@ -438,10 +438,10 @@ LA* LaSystem::getLA(int item)
 }
 
 /**
- *	Detects if a cycle is formed inside the sequence of nodes.
+ * Detects if a cycle is formed inside the sequence of nodes.
  *
- *	@param items The sequence of nodes
- *	@return bool The indication of a cyclic sequence
+ * @param items The sequence of nodes
+ * @return bool The indication of a cyclic sequence
  */
 bool LaSystem::detectCycle(const std::list<int>& items)
 {
@@ -453,7 +453,7 @@ bool LaSystem::detectCycle(const std::list<int>& items)
 }
 
 /**
- *	Clears instance's state
+ * Clears instance's state
  */
 void LaSystem::clear()
 {
@@ -463,6 +463,6 @@ void LaSystem::clear()
 }
 
 /**
- *	Virtual slotted time for LA
+ * Virtual slotted time for LA
  */
 const double LaSystem::TIME_SLOT = 0.001;
