@@ -23,12 +23,12 @@
 #include "lasystem.h"
 
 /**
- * Default empty constructor.
+ * Default constructor.
  */
 LA::LA()
 {
-    std::random_device rd;
-    gen = std::mt19937_64(rd());
+	std::random_device rd;
+	gen = std::mt19937_64(rd());
 }
 
 /**
@@ -42,8 +42,8 @@ LA::LA(std::initializer_list<int> neighs)
 		lastTimes[neigh] = 0;
 		sizes[neigh] = 1;
 	}
-    std::random_device rd;
-    gen = std::mt19937_64(rd());
+	std::random_device rd;
+	gen = std::mt19937_64(rd());
 }
 
 /**
