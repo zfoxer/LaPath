@@ -2,7 +2,7 @@
 
 ```python
 Copyright (C) 2014-2020 by Constantine Kyriakopoulos
-Version: 1.0.1
+Version: 1.0.2
 License: GNU GPL Version 3
 ```
 
