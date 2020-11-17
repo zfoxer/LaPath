@@ -35,3 +35,9 @@ The probability updating scheme Linear Reward-Inaction Algorithm [1] updates the
 
 [2] Vaidya, N.H. and Hameed, S., 1999. Scheduling data broadcast in asymmetric communication environments. Wireless Networks, 5(3), pp.171-182.
 ```
+
+## Changelog
+
+1.0.1    2020-11-16    Execution time improvement
+
+1.0      2020-11-10    Initial public release
