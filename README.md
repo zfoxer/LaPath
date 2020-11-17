@@ -38,6 +38,8 @@ The probability updating scheme Linear Reward-Inaction Algorithm [1] updates the
 
 ## Changelog
 
+<pre>
 1.0.1    2020-11-16    Execution time improvement
 
 1.0      2020-11-10    Initial public release
+</pre>
