@@ -9,7 +9,7 @@ License: GNU GPL Version 3
 
 ## About the project
 
-The shortest path problem is solved by many methods. Heuristics offer lower complexity in expense of accuracy. There are many use cases where the lower accuracy is acceptable in return of lower consumption of computing resources.
+The shortest path problem is solved by many methods. Heuristics offer lower complexity in expense of accuracy. There are many use-cases where the lower accuracy is acceptable in return of lower consumption of computing resources.
 
 Learning Automata (LA) are adaptive mechanisms requiring feedback from the executing environment to converge to certain states. In the context of network routing, LA residing at intermediate nodes along a path, exploit feedback from the destination node for reducing, e.g., path's length. This is the case since each Automaton after several iterations (depending on topology’s resources) starts pointing with higher probability to a neighbouring node which leads to a shorter path. Specifically, each LA that resides in a node, evaluates all physical neighbours with a probability number. After each feedback value from a destination node, this LA increases the probability number of the node leading to the destination and decreases all other probabilities of neighbouring nodes. So, subsequent tries (iterations) to reach the same destination have more chances to follow shorter routes. When all LA converge to certain neighbours, the path that is formed carries the properties that stem from the feedback value, e.g., low number of hops, leading to shorter paths.
 
@@ -39,7 +39,7 @@ The probability updating scheme Linear Reward-Inaction Algorithm [1] updates the
 ## Changelog
 
 <pre>
+1.0.2    2020-11-21    Interface for edge insertion improvement
 1.0.1    2020-11-16    Execution time improvement
-
 1.0      2020-11-10    Initial public release
 </pre>

@@ -49,11 +49,15 @@ public:
 	AdaptiveSystem();
 	virtual ~AdaptiveSystem();
 	virtual std::vector<int> path(int, int) = 0;
+	virtual void insertEdge(int, int, double) noexcept(false);
 	virtual void clear() = 0;
 
 protected:
 	virtual void initTopo(const std::string&);
 	std::vector<Edge> edges;
+
+private:
+	static int edgeIdCnt;
 };
 
 #endif // ADAPTIVESYSTEM_H

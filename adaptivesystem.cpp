@@ -88,7 +88,6 @@ void AdaptiveSystem::initTopo(const std::string& filename)
 		if(!std::strcmp(it->first.c_str(), "number_of_nodes"))
 			continue;
 
-		int edgeId = 0;
 		ptree::const_iterator end2 = it->second.end();
 		for(ptree::const_iterator it2 = it->second.begin(); it2 != end2; ++it2)
 		{
@@ -112,12 +111,29 @@ void AdaptiveSystem::initTopo(const std::string& filename)
 					length = it3->second.get_value<int>();
 			}
 
-			Edge edge;
-			edge.edgeStart = src;
-			edge.edgeEnd = dest;
-			edge.weight = static_cast<double>(length);
-			edge.id = ++edgeId;
-			edges.push_back(edge);
+			insertEdge(src, dest, static_cast<double>(length));
 		}
 	}
 }
+
+/**
+ * Inserts an edge.
+ * 
+ * @param src Source node
+ * @param dest Destination node
+ * @param weight Weight for the edge
+ */
+void AdaptiveSystem::insertEdge(int src, int dest, double weight) noexcept(false)
+{
+	AdaptiveSystem::Edge edge;
+	edge.edgeStart = src;
+	edge.edgeEnd = dest;
+	edge.weight = weight;
+	edge.id = ++edgeIdCnt;
+	edges.push_back(edge);
+}
+
+/**
+ * Used for producing edge IDs.
+ */
+int AdaptiveSystem::edgeIdCnt = 0;

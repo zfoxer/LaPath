@@ -34,7 +34,6 @@
 #include <array>
 #include <unordered_set>
 #include <unordered_map>
-#include <map>
 #include <set>
 #include <list>
 
@@ -50,7 +49,6 @@ public:
 	int nextItem(double);
 	void updateProbs(int, double, double) noexcept(false);
 	void timeChange(int, double) noexcept(false);
-	void dumbProbs(std::ostream&);
 	std::list<int> items();
 
 private:
@@ -73,8 +71,10 @@ public:
 	static const int ITERATIONS = 3000;
 	static const double TIME_SLOT;
 	LaSystem(const std::string&, int = 0);
+	LaSystem(int = 0);
 	virtual ~LaSystem();
 	virtual std::vector<int> path(int, int);
+	virtual void insertEdge(int, int, double) noexcept(false);
 	virtual void clear();
 	
 private:
