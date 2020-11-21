@@ -66,11 +66,13 @@ void LA::updateProbs(int node, double time, double feedback) noexcept(false)
 	if(probs.find(node) == probs.end())
 		throw std::invalid_argument("LA::updateProbs(..): Non-existent node");
 	
+	// Clamp feedback value
 	if(feedback < 0)
 		feedback = 0;
 	if(feedback > 1)
 		feedback = 1;
 	
+	// Automaton parameters
 	double a = 0.0001;
 	double l = 0.15;
 	double sumPj = 0;
@@ -375,7 +377,7 @@ double LaSystem::pathLength(const std::list<int>& path) const noexcept(false)
  *
  * @param path The path containing the nodes
  * @param time The current update time
- * @param feedback	The feedback value in range [0-1]
+ * @param feedback The feedback value in range [0-1]
  */
 void LaSystem::applyFeedback(std::list<int>& path, double time, double feedback)
 {
