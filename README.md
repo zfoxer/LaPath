@@ -18,7 +18,7 @@ This is a heuristic method, i.e., optimal results are not always feasible. Accor
 
 ## Prerequisites to build
 
-There are only two requirements, i.e., the Boost Library and the availability of C++20 or C++17 standard. Boost is utilised for parsing the JSON representation of the topology. Tested with clang 11 and libc++ from the LLVM project.
+There are only two requirements, i.e., the Boost Library and the availability of C++20 or C++17 standard. Boost is utilised for parsing the JSON representation of the topology. Tested with Clang 11 and libc++ from the LLVM project.
 
 
 ## Usage
@@ -32,7 +32,6 @@ The probability updating scheme Linear Reward-Inaction Algorithm [1] updates the
 
 ```python
 [1] Thathachar, M.A. and Sastry, P.S., 2004. Networks of learning automata: Techniques for online stochastic optimization. Springer Science & Business Media.
-
 [2] Vaidya, N.H. and Hameed, S., 1999. Scheduling data broadcast in asymmetric communication environments. Wireless Networks, 5(3), pp.171-182.
 ```
 
