@@ -1,10 +1,10 @@
 # LaPath: Learning Automata algorithm for the shortest path problem
 
----
-Copyright (C) 2014-2020 by Constantine Kyriakopoulos<br/>
-Version: 1.0.2<br/>
+```python
+Copyright (C) 2014-2020 by Constantine Kyriakopoulos
+Version: 1.0.2
 License: GNU GPL Version 3
----
+```
 
 
 ## About the project
