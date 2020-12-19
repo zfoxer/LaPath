@@ -33,7 +33,7 @@ The probability updating scheme Linear Reward-Inaction Algorithm [1] updates the
 ```python
 [1] Thathachar, M.A. and Sastry, P.S., 2004. Networks of learning automata: Techniques for online stochastic optimization. Springer Science & Business Media.
 [2] Vaidya, N.H. and Hameed, S., 1999. Scheduling data broadcast in asymmetric communication environments. Wireless Networks, 5(3), pp.171-182.
-[3] Kyriakopoulos, C.A., Papadimitriou, G.I., Nicopolitidis, P. and Varvarigos, E., 2016. On the use of learning automata for energy saving in optical backbone networks. Electronic Notes in Discrete Mathematics, 51, pp.15-22.
+[3] Kyriakopoulos, C.A. et al, 2016. On the use of learning automata for energy saving in optical backbone networks. Electronic Notes in Discrete Mathematics, 51, pp.15-22.
 ```
 
 ## Changelog
