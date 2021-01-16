@@ -1,7 +1,7 @@
 # LaPath: Learning Automata algorithm for the shortest path problem
 
 ```python
-Copyright (C) 2014-2020 by Constantine Kyriakopoulos, zfox@users.sourceforge.net
+Copyright (C) 2014-2021 by Constantine Kyriakopoulos, zfox@users.sourceforge.net
 Version: 1.0.2
 License: GNU GPL Version 3
 ```
@@ -18,7 +18,7 @@ This is a heuristic method, i.e., optimal results are not always feasible. Accor
 
 ## Prerequisites to build
 
-There are only two requirements, i.e., the Boost Library and the availability of C++20 or C++17 standard. Boost is utilised for parsing the JSON representation of the topology. There is also the option to insert edges using the <em>AdaptiveSystem</em> interface, so in this case the JSON dependence can be commented out. Tested with Clang 11 and libc++ from the LLVM project. Build with 'mkdir build && cd build; cmake -DCMAKE_BUILD_TYPE=Release ../ && make' from the main source directory.
+There are only two requirements, i.e., the Boost Library and the availability of C++20 or C++17 standard. Boost is utilised for parsing the JSON representation of the topology. There is also the option to insert edges using the <em>AdaptiveSystem</em> interface, so in this case the JSON dependence can be commented out. Tested with Clang 12 and libc++ from the LLVM project. Build with 'mkdir build && cd build; cmake -DCMAKE_BUILD_TYPE=Release ../ && make' from the main source directory.
 
 
 ## Usage
