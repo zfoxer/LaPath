@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: Kyriakopoulos
+    given-names: Constantine
+    orcid: https://orcid.org/0000-0001-7874-2205
+title: "LaPath: Learning Automata algorithm for the shortest path problem"
+version: 1.0.2
+doi: 10.5281/zenodo.7768612
+date-released: 2020-11-21
